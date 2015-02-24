@@ -1,40 +1,71 @@
-
-//
-var questions = [
+var students = [
     {
-    question: 'How many states are in the United States?', 
-    answer: 50
+        name: 'Jill',
+        track: 'iOS',
+        achievements: 32,
+        points: 5438,
+    },
+    { 
+        name:  'Henrietta',
+        track: 'Front-end Web Development',
+        achievements: 14,
+        points: 1281,
+    },
+    { 
+        name: 'Garfield',
+        track: 'Android',
+        achievements: 37,
+        points: 2583,
+    },
+    { 
+        name: 'Hubert Cumberdale',
+        track: 'Back-End Web Development',
+        achievements: 92,
+        points: 14289, 
     },
     {
-    question: 'How many continents are there?', 
-    answer: 7
+        name: 'Joe Rogan',
+        track: 'Web Design',
+        achievements: 18,
+        points: 1488,
     },
-    {
-    question: 'How many legs does an insect have?', 
-    answer: 6
-    } 
-    ];
-var correctAnswers = 0;
-var question;
-var answer;
-var response;
+];
 
-function print(message) {
-  document.write(message);
+
+var message = '';
+var student = '';
+var search = '';
+
+function print (message) {
+    var div = document.getElementById('output');
+    div.innerHTML = message;
 }
 
-for (var i = 0; i < questions.length; i += 1) {
-  question = questions[i].question;
-  answer = questions[i].answer;
-  response = prompt(question);
-  response = parseInt(response);
-  if (response === answer) {
-    correctAnswers += 1;
-  } 
+ function getStudentReport( index ) {
+   var report = "<h2>Name: " + students[index].name + "</h2>";
+   report += "<p>Track: " + students[index].track + "</p>";
+   report += "<p>Achievements: " + students[index].achievements + "</p>";
+   report += "<p>Points: " + students[index].points + "</p>";
+   return report;
 }
 
-html = "You got " + correctAnswers + " question(s) right."
-print(html);
+while (true) {
+ search = prompt("Search for a students name, i.e. [Joe Rogan]. Type 'quit' to exit Search");
+    if (search === null || search === undefined || search.toLowerCase() === 'quit') {
+        break;
+    }
+    else { 
+        for (i = 0; i < students.length; i += 1) {
 
-// OBJECTS
+            if (students[i].name.toLowerCase() === search.toLowerCase()) {
+                message = getStudentReport(i);
+                print(message);
+
+                }
+            }
+    
+    }
+    
+
+}
 
